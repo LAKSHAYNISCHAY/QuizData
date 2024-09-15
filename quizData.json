@@ -1,1 +1,17 @@
-{"questions":[{"question":"What is the capital of France?","options":["Paris","London","Berlin","Madrid"],"answer":"Paris"}]}
+{
+  "questions": [
+    {
+      "question": "What is the capital of France?",
+      "options": ["Paris", "London", "Berlin", "Madrid"],
+      "answer": "Paris",
+      "explanation": "Paris is the capital city of France."
+    },
+    {
+      "question": "What is the largest planet in our Solar System?",
+      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+      "answer": "Jupiter",
+      "explanation": "Jupiter is the largest planet in our Solar System."
+    }
+    // Add more questions here
+  ]
+}
