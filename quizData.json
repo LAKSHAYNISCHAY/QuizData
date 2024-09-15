@@ -1,0 +1,46 @@
+function submitQuizData() {
+  // Your GitHub token - make sure to store it securely and keep it private
+  var token = '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'; // Replace with your actual GitHub PAT
+  var owner = 'LAKSHAYNISCHAY'; // Your GitHub username
+  var repo = 'QuizData'; // Your repository name
+  var path = 'quizData.json'; // The file path in the repository
+  var commitMessage = 'New quiz data submission';
+
+  var data = {
+    // Your quiz data object, for example
+    questions: [
+      {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Madrid"],
+        answer: "Paris"
+      }
+    ]
+  };
+
+  var url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+  // Convert data to base64 format
+  var content = Utilities.base64Encode(JSON.stringify(data));
+
+  // Prepare the request payload
+  var payload = {
+    message: commitMessage,
+    content: content
+  };
+
+  // GitHub API requires the authorization header
+  var headers = {
+    "Authorization": "token " + token,
+    "Accept": "application/vnd.github.v3+json"
+  };
+
+  var options = {
+    method: "PUT",
+    headers: headers,
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  };
+
+  var response = UrlFetchApp.fetch(url, options);
+  Logger.log(response.getContentText());
+}
